@@ -1,0 +1,8 @@
+<h3>Ingresar Tarea: </h3>
+      <br>
+      <form (ngSubmit)="agregarObjeto()">
+      <input type="text" class="form-control" placeholder="Ingrese por favor la tarea" name="name"
+      [(ngModel)]="objeto.name">
+      <br>
+      <button class="btn btn-success" type="submit">Agregar</button>
+      </form>
