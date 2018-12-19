@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 export interface Item { name: string; }
 
@@ -17,8 +18,20 @@ export class ConexionService {
 
   constructor(private afs: AngularFirestore) {
     this.itemsCollection = afs.collection<Item>('items');
-    this.items = this.itemsCollection.valueChanges();
+    this.items = this.itemsCollection.snapshotChanges().pipe(
+        map(actions => actions.map(a => {
+        const data = a.payload.doc.data() as Item;
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      }))
+    );
   }
+
+  listaItem() {
+    return this.items;
+  }
+
+
   agregarItem(item: Item) {
     this.itemsCollection.add(item);
   }

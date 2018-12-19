@@ -9,11 +9,12 @@ import { ConexionService } from '../servicios/conexion.service';
   styleUrls: ['./lista.component.css']
 })
 export class ListaComponent implements OnInit {
+  items: any;
 
-  items: Observable<any[]>;
-
-  constructor(db: AngularFirestore, private conexion: ConexionService) {
-    this.items = db.collection('items').valueChanges();
+  constructor(private conexion: ConexionService) {
+    this.conexion.listaItem().subscribe(item => {
+      this.items = item;
+    });
   }
 
   ngOnInit() {

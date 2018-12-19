@@ -1,10 +1,7 @@
-<div class="alert alert-success" role="alert" *ngFor="let item of items | async">
-    <ul>
-      <li class="text">
-        {{item.name}}
+<div class="alert alert-success" role="alert" *ngFor="let item of items">
+        {{item.name}}-{{item.id}}
         <div class="float-right" (click)='eliminar(item)'>
         <i class="far fa-trash-alt"></i>
       </div>
-      </li>
-    </ul>
+
   </div>

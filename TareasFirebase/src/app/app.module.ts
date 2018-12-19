@@ -14,6 +14,9 @@ import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+
+// Componentes
+
 import { ListaComponent } from './lista/lista.component';
 import { AgregarListaComponent } from './agregar-lista/agregar-lista.component';
 
